@@ -389,6 +389,9 @@ static void set_serial_number(void)
 	snprintf(serial_string, sizeof(serial_string), "%016llx",
 		 msg->get_board_serial.body.resp.serial);
 	env_set("serial#", serial_string);
+	snprintf(serial_string, sizeof(serial_string), "%llx",
+		 msg->get_board_serial.body.resp.serial);
+	env_set("serial#_trimmed", serial_string);
 }
 
 int misc_init_r(void)
